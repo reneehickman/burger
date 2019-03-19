@@ -16,18 +16,18 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/", function(req, res) {
+router.post("/create", function(req, res) {
   burger.insertOne([
     "burger_name", "devoured"
   ], [
     req.body.burger_name, req.body.devoured
   ], function(result) {
-    // Send back the ID of the new quote
+    // Send back the ID of the new burger
     res.redirect("/");
   });
 });
 
-router.put("/:id", function(req, res) {
+router.put("/update/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
@@ -39,7 +39,7 @@ router.put("/:id", function(req, res) {
   });
 });
 
-router.delete("/:id", function(req, res) {
+router.delete("/delete/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   burger.deleteOne(condition, function(result) {
