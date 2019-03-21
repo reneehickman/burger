@@ -1,11 +1,17 @@
 var express = require("express");
 
+//middlewear to override the method, aka HTTP verb, so form elements support PUT and DELETE
+var methodOverride = require('method-override')
+
 var PORT = process.env.PORT || 8083;
 
 var app = express();
 
+//configure method-override to look for _method in the query string
+app.use(methodOverride('_method'));
+
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(process.cwd() + '/public'));
+app.use(express.static(process.cwd() + "/public"));
 // app.use(express.static("public"));
 
 // Parse application body
