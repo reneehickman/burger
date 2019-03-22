@@ -1,10 +1,10 @@
 <header class="container header">
-  <img id="burgerImg" src="assets/img/burger.png" alt="BurgerImg">
-  <h1>Eat-Da-Burger!</h1>
+  <img id="burgerImg" src="assets/images/burger2.png" alt="BurgerImg" style="max-height:200px; ">
+  {{!-- <h1>Eat-Da-Burger!</h1> --}}
 </header>
 
 
-<div class="mainContainer">
+<div class="mainContainer container">
 
 
   <section class="container contentContainer orderBurger">
@@ -12,17 +12,25 @@
     <div class="row">
       <div class="col">
 
-        <h3>Order a Burger</h3>
+        <h3>Order a Burger!</h3>
 
         <div class="insideContainer">
 
           <form action="/" method="POST">
             <div class="form-group">
-              <label for="burgerName">Burger Name:</label>
+              <label for="burgerName" class="mb-0"><h5>Burger Name:</h5></label>
+              <div class="input-group">
               <input type="text" class="form-control" name="burger_name" id="burgerInput">
               <input type="hidden" name="devoured" value="0">
+               <div class="input-group-append">
+              <button class="submit-button btn m-0 px-3 py-1 z-depth-0 waves-effect" type="submit">Place Order!</button>
+              </div>
+              </div>
             </div>
-            <button class="submit-button btn btn-deep-orange" type="submit">Make my burger!</button>
+
+            {{!-- <button class="submit-button btn btn-info btn-lg" type="submit">Place Order!</button> --}}
+
+            
           </form>
 
         </div>
@@ -32,15 +40,12 @@
   </section>
 
 
-
-
   <section class="container contentContainer displayBurgers">
     <div class="row">
 
 
-
-      <div class="col-md-6">
-        <h3>Burgers that are ready to eat!</h3>
+      <div class="col-md-6 readyToEat">
+        <h3>Ready to eat!</h3>
         <div class="insideContainer">
 
           {{#each burgers}}
@@ -49,13 +54,15 @@
           <div class="card">
             <div class="card-body">
 
-              <h5 class="card-title">{{this.id}}. {{this.burger_name}}</h5>
+
+              <div class="burger"><img src="/assets/images/burgerIcon.png" style="height:70px; width:70px;"></div>
+              <h5 class="card-title title">{{this.id}}. {{this.burger_name}}</h5>
+              
               
               <!--Devour burger button-->
-               {{!-- <button class="devour-burger btn btn-success" data-id="{{this.id}}" data-newDevoured="{{devour}}">DEVOUR IT!</button> --}}
               <form method="POST" action="/{{this.id}}?_method=PUT">
                 <input type="hidden" name="devoured" value="1">
-                <button class="btn btn-success devour-button" type="submit"><img src="/assets/images/devourit.png" style="height:20px; width:20px;"> Devour it!</button>
+                <button class="btn btn-success devour-button burgers" type="submit">Devour it!</button>
               </form>
 
             </div>
@@ -70,10 +77,8 @@
       <!--end of ready to eat col--->
 
 
-
-
-      <div class="col-md-6">
-        <h3 class="devouredTitle">Burgers that have been Devoured!</h3>
+      <div class="col-md-6 beenDevoured">
+        <h3 class="devouredTitle">Devoured!</h3>
         <div class="insideContainer">
 
           {{#each burgers}}
@@ -81,15 +86,12 @@
           <!-- Card -->
           <div class="card">
             <div class="card-body">
-
+              <div class="burger"><img src="/assets/images/burgerIcon.png" style="height:70px; width:70px;"></div>
               <h5 class="card-title">{{this.id}}. {{this.burger_name}}</h5>
               
               <!--Throw away burger button-->
-          {{!-- <button class="delete-burger btn btn-danger" data-id="{{this.id}}" data-newDevoured="{{devour}}"><i class="far fa-trash-alt"></i> Throw
-            away</button> --}}
             <form action="/{{this.id}}?_method=DELETE" method="POST">
-                {{!-- <input type="hidden" name="devoured" value="true"> --}}
-                <button class="btn btn-danger delete-button" type="submit"><i class="far fa-trash-alt"></i> Throw away!</button>
+                <button class="btn btn-danger delete-button burgers" type="submit"><i class="far fa-trash-alt"></i> Throw away!</button>
               </form>
 
             </div>
@@ -105,8 +107,6 @@
 
 
 
-
-
     </div>
     <!--end of displayburgers row--->
 
@@ -114,14 +114,13 @@
   <!--end of displayburgers section--->
 
 
+  <div class="container footer">
+<form action="https://github.com/reneehickman/burger" id="github">
+    <button type="submit" value="GitHub Repo" class="btn btn-info btn-sm">Github Repo</button>
+</form>
+</div>
+
 </div>
 <!--end of mainContainer--->
 
 
-<footer>
-  <div class="container footer">
-<form action="https://github.com/reneehickman/burger">
-    <button type="submit" value="GitHub Repo" class="btn btn-info btn-sm">Github Repo</button>
-</form>
-</div>
-</footer>
