@@ -5,7 +5,7 @@ Eat-Da-Burger is a full stack restaurant application created using `Node`, `Expr
 Eat-Da-Burger lets users input the names of burgers they'd like to eat. When a user submits a burger's name, the burger is then displayed under the "Ready to Eat" column on the left side of the page with a "Devour it!" button. When the user clicks the devour button, the burger moves to the "Devoured" column on the right side of the page and the devour value for that burger in the database changes to 1(true). The user then has the option to throw away that burger from the Devoured column which deletes the burger from the database completely. `Data is persistent!`
 
 
-Click [here]( ) to view the deployed app on Heroku.
+Click [here](https://gentle-waters-64959.herokuapp.com/) to view the deployed app on Heroku.
 
 ## Deployment
 1. Clone repo and run `npm install` to download app dependencies.
